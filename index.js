@@ -15,13 +15,12 @@ const intervalTime = 1000;
 
 refs.stopBtn.disabled = true;
 refs.startBtn.addEventListener("click", startColorSwitchings);
+refs.stopBtn.addEventListener("click", stopColorSwitchings);
 
 function startColorSwitchings() {
     intervalId = setInterval(switchBodyColor, intervalTime, colors);
     refs.startBtn.disabled = true;
     refs.stopBtn.disabled = false;
-    refs.stopBtn.addEventListener("click", stopColorSwitchings);
-    refs.startBtn.removeEventListener("click", startColorSwitchings);
 }
 
 function switchBodyColor(colorsArr) {
@@ -34,8 +33,6 @@ function stopColorSwitchings() {
     clearInterval(intervalId);
     refs.startBtn.disabled = false;
     refs.stopBtn.disabled = true;
-    refs.stopBtn.removeEventListener("click", stopColorSwitchings);
-    refs.startBtn.addEventListener("click", startColorSwitchings);
 }
 
 const randomIntegerFromInterval = (min, max) => {
